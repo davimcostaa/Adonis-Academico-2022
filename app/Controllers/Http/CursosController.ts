@@ -14,6 +14,7 @@ export default class CursosController {
     }
 
 
+    
     show({request}) {
         const id = request.param('id')
 
