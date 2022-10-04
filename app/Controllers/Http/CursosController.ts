@@ -13,8 +13,6 @@ export default class CursosController {
         return await Curso.create(dados)
     }
 
-
-    
     show({request}) {
         const id = request.param('id')
 
