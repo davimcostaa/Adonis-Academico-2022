@@ -19,7 +19,6 @@ export default class CursosController {
         return Curso.findOrFail(id)
     }
 
-
     async destroy({request}) {
         const id = request.param('id')
         const curso = await Curso.findOrFail(id)
@@ -28,7 +27,17 @@ export default class CursosController {
 
     }
 
+   async update({request}) {
+        const id = request.param('id')
+        const curso = await Curso.findOrFail(id)
 
+        const dados = request.only(['nome', 'modalidade', 'duracao'])
+
+        curso.merge(dados)
+
+        return curso.save()
+
+    }
 
 }
 
