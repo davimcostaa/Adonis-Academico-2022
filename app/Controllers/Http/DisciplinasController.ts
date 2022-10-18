@@ -6,9 +6,6 @@ export default class DisciplinasController {
 
     index(){
 
-
-
-        
         return Disciplina.all()
     }
 
