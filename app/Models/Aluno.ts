@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import Chamada from './Chamada'
 
 export default class Aluno extends BaseModel {
   @column({ isPrimary: true })
@@ -40,4 +41,8 @@ export default class Aluno extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @hasMany( ()=>Chamada) 
+  public chamadas: HasMany<typeof Chamada>
+  
 }
