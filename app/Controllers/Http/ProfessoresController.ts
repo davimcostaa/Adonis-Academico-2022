@@ -1,4 +1,5 @@
 import Professore from "App/Models/Professore";
+import ProfessoreValidator from "App/Validators/ProfessoreValidator";
 
 export default class ProfessoresController {
     index(){
@@ -6,9 +7,10 @@ export default class ProfessoresController {
     }
 
     async store({request}){
-        const dados = request.only(['nome', 'cpf', 'matricula', 'salario', 'email', 'telefone', 'cep', 'logradouro', 'numero', 'bairro'])
+        const dados = await request.validate(ProfessoreValidator)
         return await Professore.create(dados)
     }
+
 
     show({request}) {
         const id = request.param('id')

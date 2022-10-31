@@ -1,7 +1,7 @@
-import { schema, rules ,CustomMessages } from '@ioc:Adonis/Core/Validator'
+import { schema, rules, CustomMessages } from '@ioc:Adonis/Core/Validator'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-export default class AlunoValidator {
+export default class TurmaValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   /*
@@ -24,28 +24,16 @@ export default class AlunoValidator {
    *    ```
    */
   public schema = schema.create({
-    nome: schema.string([
-      rules.alpha({
-        allow: ['space', 'underscore', 'dash']
-      })
-    ]),
-    cpf: schema.string.optional({}, [
-      rules.minLength(15),
-      rules.maxLength(15)
-    ]),
-    matricula: schema.string(),
-    email: schema.string.optional([
-      rules.email(),
-      rules.maxLength(100),
-
-    ]),
-    telefone: schema.string.optional(),
-    cep: schema.number.optional(),
-    logradouro: schema.string.optional(),
-    complemento: schema.string.optional(),
-    numero: schema.string.optional(),
-    bairro: schema.string.optional(),
-
+      nome: schema.string([
+        rules.alpha({
+          allow: ['space', 'underscore', 'dash']
+        })
+      ]),
+      professorId: schema.number(),
+      semestreId: schema.number(),
+      disciplinaId: schema.number(),
+      salaId: schema.number(),
+      turno: schema.string()
   })
 
   /**

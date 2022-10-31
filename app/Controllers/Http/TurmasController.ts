@@ -1,4 +1,5 @@
 import Turma from "App/Models/Turma"
+import TurmaValidator from "App/Validators/TurmaValidator"
 
 export default class TurmasController {
 
@@ -7,7 +8,7 @@ export default class TurmasController {
     }
 
     async store({request}){
-        const dados = request.only(['nome', 'professorId', 'semestreId', 'disciplinaId', 'salaId', 'turno'])
+        const dados = await request.validate(TurmaValidator)
         return await Turma.create(dados)
     }
 

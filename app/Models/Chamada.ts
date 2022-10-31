@@ -23,7 +23,7 @@ export default class Chamada extends BaseModel {
   public updatedAt: DateTime
 
   @belongsTo( ()=> Aula)
-  public aula: BelongsTo<typeof Turma>
+  public aula: BelongsTo<typeof Aula>
 
   @belongsTo( ()=> Aluno)
   public aluno: BelongsTo<typeof Aluno>

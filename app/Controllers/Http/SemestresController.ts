@@ -1,4 +1,5 @@
 import Semestre from "App/Models/Semestre"
+import SemestreValidator from "App/Validators/SemestreValidator"
 
 export default class SemestresController {
     index(){
@@ -6,7 +7,7 @@ export default class SemestresController {
     }
 
     async store({request}){
-        const dados = request.only(['nome', 'dataInicio', 'dataFim'])
+        const dados = await request.validate(SemestreValidator)
         return await Semestre.create(dados)
     }
 

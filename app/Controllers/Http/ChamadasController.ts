@@ -1,4 +1,5 @@
 import Chamada from "App/Models/Chamada"
+import ChamadaValidator from "App/Validators/ChamadaValidator"
 
 export default class ChamadasController {
     index(){
@@ -7,7 +8,7 @@ export default class ChamadasController {
     }
 
     async store({request}){
-        const dados = request.only(['aulaId', 'alunosId', 'presenca'])
+        const dados = await request.validate(ChamadaValidator)
         return await Chamada.create(dados)
     }
 

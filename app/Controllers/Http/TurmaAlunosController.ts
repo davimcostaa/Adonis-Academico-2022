@@ -1,4 +1,5 @@
 import TurmaAluno from "App/Models/TurmaAluno"
+import TurmaAlunoValidator from "App/Validators/TurmaAlunoValidator"
 
 export default class TurmaAlunosController {
     index(){
@@ -6,10 +7,10 @@ export default class TurmaAlunosController {
     }
 
     async store({request}){
-        const dados = request.only(['turmasId', 'alunosId'])
+        const dados = await request.validate(TurmaAlunoValidator)
         return await TurmaAluno.create(dados)
     }
-
+    
     show({request}) {
         const id = request.param('id')
 

@@ -1,7 +1,7 @@
-import { schema, rules ,CustomMessages } from '@ioc:Adonis/Core/Validator'
+import { schema, rules, CustomMessages } from '@ioc:Adonis/Core/Validator'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-export default class AlunoValidator {
+export default class ProfessoreValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   /*
@@ -34,6 +34,7 @@ export default class AlunoValidator {
       rules.maxLength(15)
     ]),
     matricula: schema.string(),
+    salario: schema.string(),
     email: schema.string.optional([
       rules.email(),
       rules.maxLength(100),
@@ -45,7 +46,6 @@ export default class AlunoValidator {
     complemento: schema.string.optional(),
     numero: schema.string.optional(),
     bairro: schema.string.optional(),
-
   })
 
   /**
