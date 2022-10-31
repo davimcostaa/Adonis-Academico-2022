@@ -25,11 +25,11 @@ export default class DisciplinaValidator {
    */
   public schema = schema.create({
     nome: schema.string([
-      rules.alpha({
-        allow: ['space', 'underscore', 'dash']
-      })
+      rules.maxLength(50)
     ]),
-      cursoId: schema.number()
+      cursoId: schema.number([
+        rules.exists({ table: 'cursos', column: 'id' })
+      ])
   })
 
   /**

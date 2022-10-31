@@ -26,13 +26,13 @@ export default class ChamadaValidator {
   public schema = schema.create({
     aulaId: schema.number([
       rules.exists({
-        table: 'Aula',
+        table: 'aulas',
         column: 'id'
       })
     ]),
     alunosId: schema.number([
       rules.exists({
-        table: 'Aluno',
+        table: 'alunos',
         column: 'id'
       })
     ]),
