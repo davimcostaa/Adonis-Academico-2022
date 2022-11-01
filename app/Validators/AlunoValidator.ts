@@ -29,7 +29,7 @@ export default class AlunoValidator {
         allow: ['space', 'underscore', 'dash']
       })
     ]),
-    cpf: schema.string.optional({}, [
+    cpf: schema.string.optional([
       rules.minLength(15),
       rules.maxLength(15)
     ]),
@@ -59,5 +59,11 @@ export default class AlunoValidator {
    * }
    *
    */
-  public messages: CustomMessages = {}
+  public messages: CustomMessages = {
+    required: 'O campo {{field}} é obrigatório',
+    unique: 'Já existe um registro com o mesmo valor',
+    minLength: 'Tamanho mínimo não atingido',
+    maxLength: 'Tamanho máximo excedido',
+    exists: 'Não existe esse valor na tabela pai'
+  }
 }

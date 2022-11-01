@@ -26,11 +26,12 @@ export default class CursoValidator {
   public schema = schema.create({
     nome: schema.string([
       rules.alpha({
-        allow: ['space', 'underscore', 'dash']
-      })
+        allow: ['space', 'underscore', 'dash'],
+      }),
+      rules.unique({ table: 'cursos', column: 'nome' })
     ]),
     duracao: schema.number.optional(),
-    modalidade: schema.string()
+    modalidade: schema.enum(['P', 'E'])
   })
 
   /**
@@ -44,5 +45,8 @@ export default class CursoValidator {
    * }
    *
    */
-  public messages: CustomMessages = {}
+  public messages: CustomMessages = {
+    required: 'O campo {{field}} é obrigatório',
+    unique: 'Já existe um registro com o mesmo valor'
+  }
 }
